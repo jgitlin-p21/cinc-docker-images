@@ -12,6 +12,7 @@ RUN yum -y upgrade && \
     wget -qO- https://supermarket.chef.io/cookbooks/omnibus/download | tar xzC /var/chef/cookbooks && \
     for dep in windows mingw build-essential chef-sugar chef-ingredient git homebrew remote_install seven_zip wix; do \
         wget -qO- https://supermarket.chef.io/cookbooks/${dep}/download | tar xzC /var/chef/cookbooks; done && \
+    mkdir -p /etc/chef && \
     echo 'node_name "omnibus-amzn2.internal"' > /etc/chef/client.rb && \
     chef-solo -o 'recipe[omnibus]' && \
     sed -i -e 's/^env.*//' /home/omnibus/load-omnibus-toolchain.sh && \
