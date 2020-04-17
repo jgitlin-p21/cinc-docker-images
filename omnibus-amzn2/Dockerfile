@@ -1,7 +1,6 @@
 FROM p21jgitlin/ruby-rpm:amzn2
 LABEL MAINTAINER="Josh Gitlin <jgitlin@pinnacle21.com>"
 
-COPY fix-repos.sh /root/fix-repos.sh
 RUN yum -y upgrade && \
     yum -y groupinstall "Development Tools" && \
     yum -y install curl wget ca-certificates iproute rsync openssh-clients java-11-openjdk-headless sudo man procps-ng bzip2 openssl-devel libyaml-devel libffi-devel readline-devel zlib-devel gdbm-devel ncurses-devel gmp-devel && \
